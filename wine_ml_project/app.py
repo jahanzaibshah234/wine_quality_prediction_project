@@ -2,7 +2,7 @@ import streamlit as st
 import requests
 
 # FastAPI backend URL
-BASE_URL = "http://127.0.0.1:8000"
+BASE_URL = "https://vercel-fastapi-dk2xhy2rd-jahanzaibshah234s-projects.vercel.app"
 
 # Define pages
 def home_page():

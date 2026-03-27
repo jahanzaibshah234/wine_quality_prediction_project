@@ -16,8 +16,7 @@ def home_page():
             data = response.json()
             st.success(data.get("message", "Welcome to the API!"))
         else:
-            st.error(f"Failed! Vercel sent Status Code: {response.status_code}")
-            st.write("Vercel's exact error message:", response.text)
+            st.error("Failed to get prediction from the backend.")
     except Exception as e:
         st.error(f"Error: {e}")
 
@@ -63,8 +62,7 @@ def prediction_page():
                 result = response.json()
                 st.success(f"Predicted Wine Quality: {result['predicted_quality']}")
             else:
-                st.error(f"Failed! Vercel sent Status Code: {response.status_code}")
-                st.write("Vercel's exact error message:", response.text)
+                st.error("Failed to get prediction from the backend.")
         except Exception as e:
             st.error(f"Error: {e}")
 

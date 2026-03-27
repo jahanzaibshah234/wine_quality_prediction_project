@@ -3,7 +3,9 @@ fastapi
 pydantic
 uvicorn
 joblib
+streamlit>=1.30.0
 requests
+altair
 numpy
 pandas
 scikit-learn

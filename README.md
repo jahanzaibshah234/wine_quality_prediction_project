@@ -1,61 +1,42 @@
-# Wine Quality Prediction Project
+# 🍷 Wine Quality Predictor: End-to-End ML Architecture
 
-This project is a machine learning-based system for predicting the quality of wines based on various chemical properties and tests.
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://winequalitypredictionproject.streamlit.app/)
+[![FastAPI Backend](https://img.shields.io/badge/FastAPI-Backend_Live-009688?logo=fastapi)](https://vercel-fastapi-dk2xhy2rd-jahanzaibshah234s-projects.vercel.app/)
 
-## Table of Contents
-1. [Introduction](#introduction)
-2. [Installation](#installation)
-3. [Usage](#usage)
-4. [Examples](#examples)
-5. [Deployment](#deployment)
-6. [Technical Details](#technical-details)
-7. [Contributing](#contributing)
-8. [License](#license)
+## Overview
+This project is a complete, production-ready Machine Learning web application that predicts the quality of red wine based on its chemical properties.
 
-## Introduction
-Wine quality prediction is an important task that helps both consumers and producers understand wine attributes. This project utilizes various machine learning algorithms to build a predictive model based on historical wine data.
+Instead of a monolithic script, this project demonstrates a professional **two-tier architecture**: a decoupled Python frontend and backend communicating via a REST API. The underlying model has been trained to classify wine into three human-readable categories: **Good**, **Average**, or **Bad**.
 
-## Installation
-To install the necessary dependencies, run the following command:
-```
-pip install -r requirements.txt
-```
+## 🏗️ System Architecture
+1. **Frontend (Streamlit Community Cloud):** A responsive, interactive user interface that gathers user input and sends JSON payloads across the internet.  
+2. **Backend API (Vercel Serverless):** A lightning-fast FastAPI service that catches the request, validates the data using Pydantic, and executes the machine learning inference.  
+3. **Machine Learning Model:** A pre-trained Random Forest Classifier loaded dynamically into the API.
 
-## Usage
-To use this project, simply run the following command:
-```
-python main.py
-```
+## ✨ Key Features
+* **Real-time Predictions:** Instantly outputs a classification based on 11 chemical features (e.g., pH, Alcohol %, Density, Acidity).  
+* **Imbalanced Data Handling:** The Random Forest model utilizes `class_weight="balanced"` to accurately identify rare "Good" and "Bad" wines, preventing the model from lazily defaulting to the majority "Average" class.  
+* **Target Mapping:** Raw quality scores (0-10) were mapped to categorical string labels during preprocessing so the model natively outputs plain English.  
+* **Scale-Agnostic:** Because tree-based models handle non-linear data well, the pipeline is lean and does not require a scaler object for inference.
 
-## Examples
-After running the program, you can input the features of the wine you wish to predict:
-```python
-# Example usage
-features = [7.4, 0.7, 0, 1.9, 0.076, 11.2, 34, 0.9978, 3.18, 0.58] # Example features
-prediction = model.predict(features)
-print(f'The predicted quality is: {prediction}')
-```
+## 🛠️ Tech Stack
+* **Machine Learning:** `scikit-learn`, `pandas`, `numpy`, `joblib`  
+* **Backend API:** `FastAPI`, `uvicorn`, `pydantic`  
+* **Frontend UI:** `Streamlit`, `requests`  
+* **Cloud Deployment:** Streamlit Community Cloud (Frontend) & Vercel (Backend)
 
-## Deployment
-To deploy this application, you can use platforms like Heroku or AWS. Follow the respective platform's guidelines for deployment.
+## 📁 Repository Structure
+* `app.py`: The Streamlit frontend application.  
+* `main.py`: The FastAPI backend application.  
+* `wine_quality.pkl`: The serialized Random Forest model.  
+* `requirements.txt`: The master dependency list required to run both services.  
+* `winequality-red.csv`: The original UCI machine learning dataset.
 
-### Example Deployment on Heroku:
-1. Create a new Heroku app.
-2. Connect your GitHub repository.
-3. Enable automatic deployments.
-4. Push changes to your main branch and verify the deployment.
+## 🚀 How to Run Locally
 
-## Technical Details
-- **Data Source:** The dataset used is from UCI Machine Learning Repository
-- **Algorithms Used:** Random Forest, Support Vector Machine, etc.
-- **Metrics:** Mean Squared Error (MSE), Accuracy, etc.
+If you want to run this architecture on your own machine, follow these steps:
 
-## Contributing
-Contributions are welcome! Please fork the repository and submit a pull request for any improvements or ideas.
-
-## License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-Last updated on 2026-03-27 23:47:15 UTC.
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/jahanzaibshah234/wine_quality_prediction_project.git
+   cd wine_quality_prediction_project

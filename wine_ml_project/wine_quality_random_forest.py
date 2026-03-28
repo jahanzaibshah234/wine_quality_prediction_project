@@ -16,6 +16,7 @@ from sklearn.metrics import accuracy_score, confusion_matrix, classification_rep
 # ==============================
 url = "https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-red.csv"
 data = pd.read_csv(url, sep=";")
+data = data.replace({'quality': {8: 'Good', 7: 'Good', 6: 'Average', 5: 'Average', 4: 'Bad', 3: 'Bad'}})
 
 # ==============================
 # Split features and target
